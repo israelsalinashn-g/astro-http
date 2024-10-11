@@ -3,13 +3,12 @@ import { Clients, Posts, db } from 'astro:db';
 
 // https://astro.build/db/seed
 export default async function seed() {
-	// TODO
 	await db.insert(Clients).values([
-		{ id: 1, name: "Erick", age: 32, isActive: true },
-		{ id: 2, name: "Rafael", age: 26, isActive: true },
-		{ id: 3, name: "Carol", age: 28, isActive: true },
-		{ id: 4, name: "Alejandra", age: 27, isActive: true },
-		{ id: 5, name: "Valeria", age: 23, isActive: true },
+		{ name: 'Kasim', age: 35, isActive: true },
+		{ name: 'Fernando', age: 25, isActive: true },
+		{ name: 'Carlos', age: 37, isActive: true },
+		{ name: 'Melissa', age: 25, isActive: false },
+		{ name: 'Emin', age: 15, isActive: true },
 	]);
 
 	const posts = await getCollection('blog');
@@ -20,5 +19,7 @@ export default async function seed() {
 			title: p.data.title,
 			likes: Math.round(Math.random() * 100),
 		}))
-	)
+	);
+
+	console.log('Seed executed');
 }
